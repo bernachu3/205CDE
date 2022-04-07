@@ -1,0 +1,148 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ {% extends "base.html" %}
+
+ {% block content %}
+
+ <body>
+
+ <!--Custom CSS for this page-->
+ <style>
+  .card {
+    border:none;
+    padding: 10px 50px;
+  }
+
+  .card::after {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .card:hover {
+
+
+    transform: scale(1.02, 1.02);
+    -webkit-transform: scale(1.02, 1.02);
+    backface-visibility: hidden; 
+    will-change: transform;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.75) !important;
+  }
+
+  .card:hover::after {
+    opacity: 1;
+  }
+
+  .card:hover .btn-outline-primary{
+    color:white;
+    background:#007bff;
+  }
+
+  .card-title, .h1 {
+    white-space: nowrap;
+  }
+
+</style>
+
+<div class="container-fluid">
+  <form>
+    <div class="container p-5" style="margin-top: 16px;">
+     <h1>Pricing Plans</h1>
+     <br>
+     <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card h-100 shadow-lg">
+          <div class="card-body">
+            <div class="text-center p-3">
+              <h3 class="card-title">Monthly</h3>
+              <br>
+              <span class="h1">$60</span>
+              <br><br>
+            </div>
+            <p class="card-text">What you get:</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> 24/7 Access to all our gym facilities
+            </li>
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> Free booking for private rooms and personal training sessions
+            </li>
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> Complimentary snacks
+            </li>
+          </ul>
+          <div class="card-body text-center">
+            <a class="btn btn-outline-primary btn-lg" href="join?plan=0" role="button" style="border-radius:30px">Join Now!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card h-100 shadow-lg">
+          <div class="card-body">
+            <div class="text-center p-3">
+              <h3 class="card-title">Annual</h3>
+              <br>
+              <span class="h1">$699</span> 
+              <br><br>
+            </div>
+            <p class="card-text">What you get:</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> 24/7 Access to all our gym facilities
+            </li>
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> Priority booking for private rooms and personal training sessions
+            </li>
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> Complimentary snacks
+            </li>
+          </ul>
+          <div class="card-body text-center">
+            <a class="btn btn-outline-primary btn-lg" href="join?plan=1" role="button" style="border-radius:30px">Join Now!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card h-100 shadow-lg">
+          <div class="card-body">
+            <div class="text-center p-3">
+              <h3 class="card-title">Decennial</h3>
+              <br>
+              <span class="h1">$6888</span>
+              <br><br>
+            </div>
+            <p class="card-text">What you get:</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> 24/7 Access to all our gym facilities
+            </li>
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> Priority booking booking for private rooms and personal training sessions
+            </li>
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> Complimentary snacks
+            </li>
+            <li class="list-group-item">
+              <i class="fas fa-check"></i> A free water bottle
+            </li>
+          </ul>
+          <div class="card-body text-center">
+            <a class="btn btn-outline-primary btn-lg" href="join?plan=2" role="button" style="border-radius:30px">Join Now!</a>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </form>  
+</div> 
+
+</body>
+
+{% endblock %}
+
+</html>

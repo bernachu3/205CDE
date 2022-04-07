@@ -1,0 +1,137 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ {% extends "base.html" %}
+
+ {% block content %}
+
+ <br><br>
+
+ <body>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  <div class=flashes>
+    <div class="container" style="width: 95%; margin-top: 20px;">
+      <div class="rounded">
+        <div class="card" style="background-color: #fff0c0;>
+            <div class="card-body">
+              <h4>
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+              </h4>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endwith %}
+
+<section class="vh-100 glass">
+  <div class="container-fluid h-custom glass">
+    <div class="container align-items-center glass" style="margin-top: 60px; width: 80%; display:none;">
+        <div class="card glass">
+            <div class="card-body glass"></div>
+            <p class="text-center h1 glass"><b>Sign Up</b></p>
+            <div class="d-flex flex-wrap row justify-content-center glass" style="width: 98%;">
+                <div class="col glass peanut">
+                  <div class="container glass" style="margin-top: 40px; width: 90%;">
+                    <form class="mx-1 mx-md-4 glass" method="POST">
+                      {{ form.csrf_token}}
+
+                      <div class="d-flex flex-row align-items-center mb-4 glass">
+                          <i class="fas fa-user fa-lg me-3 fa-fw glass"></i>
+                          <div class="form-outline flex-fill mb-0 glass">
+                              {{ form.username(class_="form-control glass", placeholder="Username") }}
+                          </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4 glass">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw glass"></i>
+                          <div class="form-outline flex-fill mb-0 glass">
+                              {{ form.email(class_="form-control glass", placeholder="Email") }}
+                          </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4 glass">
+                          <i class="fas fa-lock fa-lg me-3 fa-fw glass"></i>
+                          <div class="form-outline flex-fill mb-0 glass">
+                              {{ form.password(class_="form-control glass", placeholder="Password") }}
+                          </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4 glass">
+                          <i class="fas fa-lock fa-lg me-3 fa-fw glass"></i>
+                          <div class="form-outline flex-fill mb-0 glass">
+                              {{ form.confirmpw(class_="form-control glass", placeholder="Confirm Password") }}
+                          </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center justify-content-center glass" style="min-height: 42px;">
+                          {{ form.accept_tos(class="form-check-input me-2 glass") }}
+                          <label class="form-check-label glass" for="accept_tos">I agree to the
+                              <a href="#" data-bs-toggle="modal" data-bs-target="#ToS">Terms and Conditions</a>
+                          </label>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center justify-content-center glass" style="min-height: 42px;">
+                          {{ form.newsletter(class="form-check-input me-2 glass", id="newsletter") }}
+                          <label class="form-check-label glass" for="newsletter">Yes, sign me up for the newsletter</a></label>
+                      </div><br>
+
+                      <div class="d-flex flex-row glass" style="min-height: 66px;">
+                          <p class="glass">Already have an account? <a class="nav-item" href="login">Signin</a></p>
+                      </div>
+
+                      <div class="d-flex justify-content-center glass" style="margin-bottom: 66px;">
+                          {{ form.submit(class="btn btn-primary btn-lg glass") }}
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col glass peanut">
+                    <img src="{{ url_for('static',filename='images/gym.png') }}" class="img-fluid" alt="Sample image">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+      <!--Terms and Services Popup Modal Window-->
+      <div class="modal fade" id="ToS" tabindex="-1" role="dialog" aria-labelledby="ToS_title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ToS_title">Terms and Conditions</h5>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Ista Terma e Condition paginar et un declaro del forma concordar Harmony Gym (hic de "Nos") et la user del ista sito Web (hic de "Vous"). Via utilisar nostre application, vous affirmar vous usara ista Gym con salve, con respecto dar cetere humanis cousar, rememberar omnia humane intra hic e gratis
+            non accessione prima mega mediolarium bout cannel area restricto various.</p>
+            <p>Praesent rutrum mollis dolor et fermentum. Nulla facilisi. Mauris quis ipsum id ex bibendum lobortis quis et purus. Suspendisse potenti. Cras eu posuere erat. In vel risus eget sapien viverra mollis. Ut tempor nulla in sem vestibulum laoreet. Curabitur sed ullamcorper eros. Integer id molestie augue. Etiam ullamcorper felis non posuere faucibus. Phasellus vitae purus nulla. Maecenas egestas, turpis ac facilisis cursus, ante nisl blandit sem, eget fringilla lacus nulla in quam.</p>
+            <p>Morbi euismod sagittis dui, quis luctus risus malesuada non. Morbi scelerisque ac sem sit amet dapibus. Proin venenatis, nulla pellentesque tristique malesuada, diam justo feugiat magna, eu vulputate lorem magna vel enim. Morbi vel sagittis turpis. Aliquam et nisl et metus congue vehicula sed in erat. Curabitur suscipit non nisl id semper. Nunc eu augue vitae odio efficitur luctus nec id lectus. Sed pulvinar ipsum maximus, viverra elit vitae, commodo metus.</p>
+            <p>Duis tincidunt congue augue, pharetra dignissim nulla fringilla a. Sed fringilla porta luctus. Cras pharetra tellus lorem, a pulvinar quam varius in. Mauris non ligula sit amet nulla varius facilisis eget et tortor. Cras tempor, massa vitae finibus iaculis, ipsum odio ornare metus, varius vulputate tellus augue ut felis. Aenean risus arcu, dictum ut accumsan in, euismod vel dolor. Praesent vel justo justo. Cras et convallis mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis et magna non purus lacinia ullamcorper. Suspendisse congue sit amet orci non vestibulum. Cras in risus quis erat blandit fermentum id at nisi. Mauris eleifend tincidunt est ut aliquam.</p>
+            <p>Pellentesque aliquet nisi lobortis, ultrices metus at, sollicitudin nulla. Fusce dictum laoreet lacus vel venenatis. Fusce id leo id enim imperdiet semper id vel sapien. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce feugiat ut est faucibus porta. Mauris vehicula nunc sit amet neque euismod, et faucibus sem luctus. Quisque in elementum mi, id scelerisque urna. Mauris congue interdum tellus vitae pretium. Mauris massa ante, sollicitudin eu suscipit ut, finibus vitae ante. Nulla et auctor urna.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+<script> 
+$(document).ready(function(){
+    $(".glass").slideDown("slow");
+  });
+
+$(document).ready(function() {
+    $("#newsletter").trigger('click');
+  });
+</script> 
+
+ {% endblock %}

@@ -1,0 +1,104 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ {% extends "base.html" %}
+
+ {% block content %} 
+
+ <body>
+
+    <div class="row" style="margin: 1em;">
+        <h1>Your Shopping Cart</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card" style="margin-bottom: 3em;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-3" style="width: 30%;">
+                                <p>  </p>
+                            </div>
+                            <div class="col" style="padding: 0; width: 20%;">
+                                <h4>Item</h4>
+                            </div>
+                            <div class="col" style="padding: 0; width: 20%; white-space: nowrap;">
+                                <h4>Number</h4>
+                            </div>
+                            <div class="col" style="padding: 0; width: 30%;">
+                                <h4>Price</h4>
+                            </div>
+                        </div>
+                        <hr>
+                        {% for item in data %}
+                        <div class="row" style="text-align: center;">
+                            <div class="col-lg-3" style="width: 30%;">
+                                <img style="width: 100%;" src="static/images/{{ item.0 }}.png">
+                            </div>
+                            <div class="col" style="padding: 0; width: 20%;">
+                                <h5>{{ item.0 }}</h5>
+                            </div>
+                            <div class="col" style="padding: 0; width: 20%;">
+                                <h5 style="white-space: nowrap;">
+                                    <a class="btn btn-primary" href="subtractitem_cart?item={{ item.0 }}&num={{ item.1 }}">
+                                        <i class="fas fa-minus"></i>
+                                    </a>
+                                    {{ item.1 }}
+                                    <a class="btn btn-primary" href="additem_cart?item={{ item.0 }}">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                </h5>
+                            </div>
+                            <div class="col" style="padding: 0; width: 20%;">
+                                <h5 class="totals">${{ item.1 * item.2 }}</h5>
+                            </div>
+                        </div>
+                        <hr>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style="text-align: center;">Your Total</h4>
+                        <br>
+                        <h5 id="grandTotal"></h5>
+                        <h5>Taxes - $0</h5>
+                        <div id="shipping"></div>
+                        <br>
+                        <a class="btn btn-warning" href="checkout" style="width: 100%;" role="button">Place Order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    $(document).ready(function(){
+        var summarray = document.getElementsByClassName("totals");
+        var valSumer = 0;
+        for (var i = 0; i < summarray.length; i++) {
+            valSumer = valSumer + parseInt(summarray[i].innerHTML.substring(1)) ;
+        }
+
+        document.getElementById("grandTotal").innerHTML="Items - $" + valSumer;
+
+        if (valSumer < 200) {
+            document.getElementById("shipping").innerHTML=`
+            <h5>Shipping - $40</h5><br>
+            <p style="max-width: 100%;">Add $` + (200 - valSumer) + ` to your cart for free shipping</p>`;
+        } else {
+            document.getElementById("shipping").innerHTML=`
+            <h5>Shipping - $0</h5><br>
+            <p style="max-width: 100%;">Congratulations! You qualify for free shipping!</p>`;
+        }
+    });
+</script>
+
+{% endblock %}
+
+</html>

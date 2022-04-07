@@ -1,0 +1,91 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ {% extends "base.html" %}
+
+ {% block content %}
+
+ <br><br>
+
+ <body>
+
+    <section class="vh-100">
+        <div class="container h-75">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px;background-color: #f0f0f0;">
+                        <div class="card-body p-md-5">
+                            <div class="row justify-content-center">
+                                <h4 class="card-title" style="margin-left:25px;">Credit Card</h4>
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                <div class=flashes>
+                                    <div class="container" style="width: 95%; margin-top: 20px;">
+                                      <div class="rounded">
+                                        <div class="card" style="background-color: #fff0c0;>
+                                        <div class="card-body">
+                                            <h4>
+                                              {% for message in messages %}
+                                              {{ message }}
+                                              {% endfor %}
+                                          </h4>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div><br><br>
+                      {% endif %}
+                      {% endwith %}
+                      {% block body %}{% endblock %}
+
+                      <div class="row" style="margin-right:50px;margin-left:50px;">
+                        <div class="col">
+                            <form id="joinus"  class="mx-1 mx-md-4" method="POST">
+                                {{ form.csrf_token }}
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="inputbox mt-3">
+                                            <span>Name on Card</span> {{ form.ccname(class_="form-control", placeholder="Chan Tai Man") }} <br>
+                                            <i class="fa fa-credit-card"></i> <span>Card Number</span> {{ form.ccnumber(class_="form-control", placeholder="4111 1111 1111 1111") }} <br>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span>Expiry</span> {{ form.expiry(class_="form-control", placeholder="MM/YY") }}
+                                            </div>
+                                            <div class="col">
+                                                <span>CVV</span> {{ form.cvv(class_="form-control", placeholder="000") }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                     <h5>Choose Your Plan</h5>
+                                        {% for subfield in form.plan %}
+                                        <label class="btn btn-light btn-lg btn-block" style="width:95%;">
+                                            {% if arg == loop.index %}
+                                            {{ subfield(checked='checked') }} {{ subfield.label }}
+                                            {% else %}
+                                            {{ subfield }} {{ subfield.label }}
+                                            {% endif %}
+                                        </label><br><br>
+                                        {% endfor %}
+                                </div>
+                            </div>
+                            <div class="float-end">
+                                {{ form.submit(class="btn btn-primary btn-lg") }}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+
+{% endblock %}
+
+</html>

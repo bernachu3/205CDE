@@ -1,0 +1,62 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ {% extends "base.html" %}
+
+ {% block content %}
+
+<body>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  <div class=flashes>
+    <div class="container" style="width: 95%; margin-top: 20px;">
+      <div class="rounded">
+        <div class="card" style="background-color: #fff0c0;>
+        <div class="card-body">
+          <h4>
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endwith %}
+
+    <div class="container" style="margin-top: 20px;width: 90%;">
+        <h1 style="margin-left: -12px;">Cancel Bookings</h1>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Your Current Bookings</h4><br>
+
+                {% if (rooms or coaches) %}
+
+                  {% if rooms %}
+                    {% for room in rooms %}
+                      <p>A private room on day {{ room.2 }} <a class="btn btn-outline-warning" style="position: absolute; left: 300px;" href="cancelRoom?day={{ room.2 }}" role="button">Cancel</a></p><br>
+                    {% endfor %}
+                  {% endif %}
+
+                  {% if coaches %}
+                    {% for coach in coaches %}
+                      <p>A personal coach for day {{ coach.2 }} <a class="btn btn-outline-warning" style="position: absolute; left: 300px;" href="cancelCoach?day={{ coach.2 }}" role="button">Cancel</a></p><br>
+                    {% endfor %}
+                  {% endif %}
+
+                {% else %}
+                  <p>You don't have any bookings</p>
+                {% endif %}
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}
+
+</html> 

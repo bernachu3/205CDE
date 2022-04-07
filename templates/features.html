@@ -1,0 +1,95 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ {% extends "base.html" %}
+
+ {% block content %}
+
+ <br><br>
+
+ <body>
+
+   <main role="main">
+
+      <div class="container marketing center">
+
+        <h1>Why choose us?</h1><br>
+
+        <!-- Profiles -->
+        <div class="row">
+          <div class="col-lg-4 ani1" style="display:none;">
+            <img class="rounded-circle ani1" src="{{ url_for('static',filename='images/dumbbell.png') }}" alt="Generic placeholder image" width="140" height="140" style="position:relative;">
+            <h2 class="ani1">High class facilities</h2>
+            <p class="ani1">We offer state of the art facilities that are imported from Switzerland. That's a place well known for its gyms, right?
+            Look, I don't know. I'm a developer, not a gym person.</p>
+          </div>
+          <div class="col-lg-4 ani2" style="display:none;">
+            <img class="rounded-circle ani2" src="{{ url_for('static',filename='images/staff.png') }}" alt="Generic placeholder image" width="140" height="140" style="position:relative;">
+            <h2 class="ani2">Friendly staff</h2>
+            <p class="ani2">We will never judge you for being unable to lift up a dumbbell. Other people might, but we won't. Not in public, anyway.
+            We promise our staff will retreat into the backroom before laughing at you.</p>
+          </div>
+          <div class="col-lg-4 ani3" style="display:none;">
+            <img class="rounded-circle ani3" src="{{ url_for('static',filename='images/tube.png') }}" alt="Generic placeholder image" width="140" height="140" style="position:relative;">
+            <h2 class="ani3">Close to the subway</h2>
+            <p class="ani3">It's not the Tokyo Metro (There's no good stock photo of it), but it's something, right? Hey, it can't be worse than carpooling. Lord knows people hate carpooling.</p>
+          </div>
+        </div>
+
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading" style="text-align: left;">We know what you want. <span class="text-muted">It'll blow your mind.</span></h2>
+            <p class="lead" style="text-align: left;">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid thumbnail" src="{{ url_for('static',filename='images/dog.jpg') }}" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2" style="text-align: right;">
+            <h2 class="featurette-heading">No hidden fees. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead" style="text-align: right;">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto enlarge-onhover" src="{{ url_for('static',filename='images/toast.jpg') }}" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading" style="text-align: left;">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead" style="text-align: left;">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto enlarge-onhover" src="{{ url_for('static',filename='images/meditate.jpg') }}" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+      </div>
+
+</body>
+
+<script> 
+$(document).ready(function(){
+    $(".ani1").fadeIn();
+    $(".ani2").delay(600).fadeIn();
+    $(".ani3").delay(1200).fadeIn();
+  });
+
+</script> 
+
+{% endblock %}
+
+</html>

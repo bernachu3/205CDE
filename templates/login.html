@@ -1,0 +1,85 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ {% extends "base.html" %}
+
+ {% block content %}
+
+ <br><br>
+
+ <body>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  <div class=flashes>
+    <div class="container" style="width: 95%; margin-top: 20px;">
+      <div class="rounded">
+        <div class="card" style="background-color: #fff0c0;>
+            <div class="card-body">
+              <h4>
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+              </h4>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endwith %}
+
+<section class="vh-100 glass">
+  <div class="container-fluid h-custom glass">
+    <div class="container align-items-center glass" style="margin-top: 60px; width: 80%; display:none;">
+        <div class="card glass">
+            <div class="card-body glass"></div>
+            <p class="text-center h1 glass"><b>Login</b></p>
+            <div class="d-flex flex-wrap row justify-content-center glass" style="margin-bottom: 40px;">
+                <div class="col glass peanut">
+                  <div class="container glass" style="margin-top: 40px; margin-bottom: 40px; width: 90%;">
+                    <form class="glass" method="POST">
+                      {{ form.csrf_token }}
+
+                      <div class="d-flex flex-row align-items-center mb-4 glass">
+                          <i class="fas fa-user fa-lg me-3 fa-fw glass"></i>
+                          <div class="form-outline flex-fill mb-0 glass">
+                              {{ form.username(class_="form-control glass", placeholder="Username") }}
+                          </div>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4 glass">
+                          <i class="fas fa-lock fa-lg me-3 fa-fw glass"></i>
+                          <div class="form-outline flex-fill mb-0 glass">
+                              {{ form.password(class_="form-control glass", placeholder="Password") }}
+                          </div>
+                      </div>
+
+                      <div class="glass">
+                          <p class="glass">Don't have an account? <a class="nav-item" href="signup">Signup</a></p>
+                      </div>
+
+                      <div class="d-flex justify-content-center glass">
+                          {{ form.submit(class="btn btn-primary btn-lg glass") }}
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col glass peanut">
+                    <img src="{{ url_for('static',filename='images/draw1.png') }}" class="img-fluid" alt="Sample image">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+</body>
+
+<script> 
+$(document).ready(function(){
+    $(".glass").slideDown("slow");
+  });
+</script> 
+
+{% endblock %}
